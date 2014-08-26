@@ -1,0 +1,32 @@
+CAT
+height = 2
+width = 3
+life = 1
+model =
+î_ü
+Í–Í
+ASTEROID
+height = 1
+width = 3
+life = 1
+model =
+@}=
+BOSS1
+height = 9
+width = 30
+life = 30
+model =
+                      ______
+                     /~~~~~|
+                .__./''''''|
+._____________/   |/^^^^^^^\\
+|             `===\"\\_______/ 
+`.             .___/^^^^^^^^\\
+  `------------'~~~\\________/
+                   `........\\
+                    `-------'
+BULLETS1
+height = 1
+width = 3
+model =
+---
