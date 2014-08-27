@@ -6,12 +6,6 @@ HANDLE hScreenBuffer = INVALID_HANDLE_VALUE;
 CHAR_INFO* screenDataBuffer = 0;
 extern COORD ConsoleSize;
 
-COORD setCOORD(int x, int y)
-{
-	COORD c={x,y};
-	return c;
-}
-
 void gotoXY(int x,int y)
 {
 	COORD c={x,y};
@@ -143,7 +137,6 @@ void clearBuffer(WORD attribute)
         screenDataBuffer[i].Attributes = attribute;
     }
 }
-
 void writeToBuffer(COORD c, LPCSTR str, WORD attribute)
 {    
     size_t index = c.X + ConsoleSize.X * c.Y;
@@ -164,24 +157,6 @@ void writeToBuffer(COORD c, char ch, WORD attribute)
 {
     screenDataBuffer[c.X + ConsoleSize.X * c.Y].Char.AsciiChar = ch;
     screenDataBuffer[c.X + ConsoleSize.X * c.Y].Attributes = attribute;
-}
-
-void writeToBuffer(int x, int y, LPCSTR str, WORD attribute)
-{
-	COORD c = setCOORD(x, y);
-    writeToBuffer(c, str, attribute);
-}
-
-void writeToBuffer(int x, int y, std::string& s, WORD attribute)
-{
-	COORD c = setCOORD(x, y);
-    writeToBuffer(c, s, attribute);
-}
-
-void writeToBuffer(int x, int y, char ch, WORD attribute)
-{
-	COORD c = setCOORD(x, y);
-    writeToBuffer(c, ch, attribute);
 }
 
 void writeToConsole(const CHAR_INFO* lpBuffer)

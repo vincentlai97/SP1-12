@@ -8,7 +8,6 @@
 
 // Go to a specific coordinate in the console
 // Top left is origin (0,0), consoles usually have a width of 80 and height of 40
-COORD setCOORD(int x,int y);
 void gotoXY(int x,int y);
 void gotoXY(COORD c);
 
@@ -54,9 +53,6 @@ void clearBuffer(WORD attribute = 0x0F);
 void writeToBuffer(COORD c, LPCSTR str, WORD attribute = 0x0F);
 void writeToBuffer(COORD c, std::string& s, WORD attribute = 0x0F);
 void writeToBuffer(COORD c, char ch, WORD attribute = 0x0F);
-void writeToBuffer(int x, int y, LPCSTR str, WORD attribute = 0x0F);
-void writeToBuffer(int x, int y, std::string& s, WORD attribute = 0x0F);
-void writeToBuffer(int x, int y, char ch, WORD attribute = 0x0F);
 void writeToConsole(const CHAR_INFO* lpBuffer);
 
 #endif // _CONSOLE_H
