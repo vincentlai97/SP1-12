@@ -13,6 +13,7 @@ COORD ConsoleSize = {80, 25};
 double elapsedTime;
 double deltaTime;
 bool keyPressed[K_COUNT];
+int Life;
 
 
 // Game specific variables here
@@ -24,6 +25,8 @@ void init()
     elapsedTime = 0.0;
 
     initConsole(ConsoleSize, "SP1 Framework");
+
+	Life = 3;
 
     charLocation.X = ConsoleSize.X / 2;
     charLocation.Y = ConsoleSize.Y / 2;
