@@ -1,3 +1,14 @@
+ASTEROID
+height = 1
+width = 3
+life = 1
+model =
+@}=
+alwaysmove = true
+x_maxmove = 1
+y_maxmove = 0
+limit = false
+
 CAT
 height = 2
 width = 3
@@ -5,28 +16,38 @@ life = 1
 model =
 î_ü
 Í–Í
-ASTEROID
-height = 1
-width = 3
-life = 1
-model =
-@}=
+alwaysmove = true
+x_maxmove = 1
+y_maxmove = 1
+limit = false
+
 BOSS1
 height = 9
 width = 30
 life = 30
 model =
-                      ______
-                     /~~~~~|
-                .__./''''''|
+                     ______
+                    /~~~~~|
+               .__./''''''|
 ._____________/   |/^^^^^^^\\
 |             `===\"\\_______/ 
 `.             .___/^^^^^^^^\\
   `------------'~~~\\________/
                    `........\\
                     `-------'
+alwaysmove = false
+x_maxmove = 5
+y_maxmove = 5
+limit = true
+x_limit = 60 30
+y_limit = 10 1
+
 BULLETS1
 height = 1
 width = 3
 model =
 ---
+alwaysmove = true
+x_maxmove = 1
+y_maxmove = 0
+limit = false

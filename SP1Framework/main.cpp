@@ -35,6 +35,7 @@ unsigned int bulletBuffer;
 enemies* enemyArr;
 enemies* enemyBulletArr;
 levelinfo levelInfo;
+levelinfo bulletInfo;
 bool levelStart;
 int spawnBufferCount;
 int enemiesSpawned;
@@ -204,6 +205,20 @@ void render()
 	checkBulletCollision(enemyArr, levelInfo.number);
 	checkEnemyCollision(enemyArr, levelInfo.number);
 	renderEnemy(enemyArr, levelInfo.number);
+	if (levelInfo.bullets)
+	{
+		if (spawnEnemyBullet(enemyArr))
+		{
+				spawnBufferCount += bulletInfo.spawnBuffer;
+		}
+		moveEnemy(enemyBulletArr, bulletInfo.number);
+		checkEnemyCollision(enemyBulletArr, bulletInfo.number);
+		renderEnemy(enemyBulletArr, bulletInfo.number);
+	}
+	
+	// Writes the buffer to the console, hence you will see what you have written
+    flushBufferToConsole();
+
 	if (enemiesSpawned == levelInfo.number) 
 	{
 		if (checkClear(enemyArr, levelInfo.number)) 
@@ -212,11 +227,9 @@ void render()
 			enemiesSpawned = 0;
 			spawnBufferCount = 0;
 			delete[] enemyArr;
+			delete[] enemyBulletArr;
 			levelInfo.level = levelInfo.nextLevel;
 		}
 	}
-    
-    // Writes the buffer to the console, hence you will see what you have written
-    flushBufferToConsole();
 }
 

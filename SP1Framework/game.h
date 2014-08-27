@@ -52,15 +52,27 @@ struct enemies
 	int size[DIMENSION];
 	char** model;
 	int life;
+	bool alwaysMove;
+	int x_maxmove;
+	int y_maxmove;
+	int x_limit[LIMIT];
+	int y_limit[LIMIT];
 	int direction[DIRECTION];
 
-	void set(int height, int width, int l)
+	void set(int height, int width, int l, bool AM, int xmm, int ymm, int xlu, int xll, int ylu, int yll)
 	{
 		size[HEIGHT] = height;
 		size[WIDTH] = width;
 		life = l;
 		location.X = 0;
 		location.Y = 0;
+		alwaysMove = AM;
+		x_maxmove = xmm;
+		y_maxmove = ymm;
+		x_limit[UPPER] = xlu;
+		x_limit[LOWER] = xll;
+		y_limit[UPPER] = ylu;
+		y_limit[LOWER] = yll;
 	}
 
 	void setModel (char** extModel)
@@ -79,19 +91,11 @@ struct levelinfo
 {
 	int level;
 	int number;
-	bool bullets;
-	bool alwaysMove;
-	int x_maxmove;
-	int y_maxmove;
-	bool limit;
-	int x_limit[LIMIT];
-	int y_limit[LIMIT];
 	int spawnChance;
 	int spawnBuffer;
-	int spawnBufferCount;
 	bool setSpawn;
 	int spawnLocation;
-	int enemySpawned;
+	bool bullets;;
 	int nextLevel;
 };
 
@@ -107,6 +111,7 @@ extern int shipLen;
 extern COORD shipLocation;
 extern bool** bullets;
 extern levelinfo levelInfo;
+extern levelinfo bulletInfo;
 extern enemies* enemyArr;
 extern enemies* enemyBulletArr;
 
@@ -122,10 +127,12 @@ void renderEnemy(enemies&);
 void moveEnemy(enemies[], int);
 void moveEnemy(enemies&);
 void moveEnemy(enemies&, int&, int&);
+void moveEnemyBullet(enemies[], int);
 bool checkBulletCollision(enemies[], int);
 bool checkBulletCollision(enemies&);
 bool checkEnemyCollision (enemies[], int);
 bool checkClear(enemies[], int);
 bool checkClear(enemies);
+bool spawnEnemyBullet(enemies[]);
 
 #endif // _GAME_H
